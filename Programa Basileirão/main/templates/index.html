@@ -1,0 +1,41 @@
+{% extends "base.html"%}
+
+{% block app_content %}
+<body>
+	<div style="background-color: white;">
+	<h1 style="margin: 140px 00px 0px 70px;">CLASSIFICAÇÃO CAMPEONATO BRASILEIRO - SÉRIE A</h1>
+	<table style="text-indent: 30px; margin: 10px 0px 0px 50px;">
+		<tr>
+        <td style="text-indent: 50px;">Time</td>
+		    <td style="text-indent: 100px;">Pontos</td>
+		    <td >Vitória</td>
+		    <td>Empate</td>
+		    <td>Derrota</td>
+		    <td>Saldo de Gols</td>
+		    <td>Gols Pró</td>
+		    <td>Gols Contra</td>
+		    <td>Cartões Amarelos</td>
+				<td>Cartões Vermelhos</td>
+		</tr>
+	</table>
+	
+	<table style="text-indent: 2px; margin: 10px 0px 0px 90px;">
+		{% for time in times %}
+			<tr>
+					<td> <img src="{{ time.escudo }}" style="max-width: 30px; margin: 0px 0px 10px 0px;"> {{ time.nome }}</td>
+					<td style="text-indent: 70px;">{{ time.pontos}}</td>
+					<td style="text-indent: 60px;">{{ time.vitorias }}</td>
+					<td style="text-indent: 60px;">{{ time.empates }}</td>
+					<td style="text-indent: 68px;">{{ time.derrotas }}</td>
+					<td style="text-indent: 85px;">{{ time.saldo_gols }}</td>
+					<td style="text-indent: 85px;">{{ time.gols_pro }}</td>
+					<td style="text-indent: 70px;">{{ time.gols_contra }}</td>
+					<td style="text-indent: 95px;">{{ time.cartoes_amarelos }}</td>
+					<td style="text-indent: 140px;">{{ time.cartoes_vermelhos }}</td>
+			</tr>
+		{% endfor %}
+	  </table>
+	</div>
+</body>
+
+{% endblock %}

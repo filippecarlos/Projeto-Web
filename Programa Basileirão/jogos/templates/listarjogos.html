@@ -1,0 +1,17 @@
+{% extends "base.html"%}
+
+{% block app_content %}
+<body>
+    <p><a style="background-color: rgb(66, 253, 9); color: rgb(10, 10, 10)  ; text-align: center;font-size: 30px" href="{{ url_for('jogos.create') }}">CRIAR PARTIDA</a></p>
+    {% for rodada in jogos %}
+    <h1 style="margin: 0px 0px 20px 0px; background-color: rgb(50, 47, 252);font-size: 80px; text-align: center"> RODADA {{ rodada }} </h1>
+        <ul>
+            {% for jogo in jogos [rodada] %}
+            <div style="background-color: rgb(245, 240, 240);font-size: 20px; text-align: center ;"><li style="margin: 0px 0px 20px 0px;"> {{jogo.mandante.nome}} {{ jogo.gols_mandante }}  X  {{ jogo.gols_visitante }} {{jogo.visitante.nome}}
+            <a href="{{ url_for('jogos.update', id=jogo.id) }}"> Editar <a href="{{ url_for('jogos.delete', id=jogo.id) }}"> Escluir </a> </a> </li>
+            <div style="margin: 0px 0px 20px 0px;"> Data: {{ jogo.data }} </div></b></div>
+            {% endfor %}
+        </ul>
+</body>
+{% endfor %}
+{% endblock %} 
