@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+<!-- Esse bloco é um gerenciamento de Erro, não precisa mexer -->
+{% if errors %}
+	<div class="container">
+    	{%- for msg in errors %}
+    		<div class="alert alert-danger" role="alert">
+				{{ msg }}
+				{% for error in errors[msg] %}
+				{{error}}
+				{% endfor %}
+			</div>
+    	{% endfor -%}
+	</div>
+{% endif %}
+<!-- Faça o template a partir daqui-->
+<b><body>
+<form method="POST" action="">
+	{{ form.hidden_tag() }}
+	<div style="background-color: rgb(255, 255, 255);">
+<div style="margin: 250px auto 0px 320px;">
+	{{ form.data.label() }} 
+	<a style="color: black;">{{ form.data() }}</a> 
+</div>
+<div style="margin: 20px auto 0px 320px; color: black;">
+	{{ form.mandante() }} {{ form.gols_mandante(size=3)}} X {{ form.gols_visitante(size=3)}} {{ form.visitante() }}
+</div>
+<div style="margin: 20px auto 0px 320px;">
+	{{ form.rodada.label }} 
+	<a style="color: black;">{{ form.rodada() }}</a>
+</div>
+<div style="margin: 20px auto 0px 320px;">
+	Cartões amarelos para o mandante:
+	<a style="color: black;">{{ form.amarelos_mandante }}</a>
+</div>
+<div style="margin: 20px auto 0px 320px;">
+	Cartões amarelos para o visitante:
+	<a style="color: black;">{{ form.amarelos_visitante }}</a>
+</div>
+<div style="margin: 20px auto 0px 320px;">
+	Cartões vermelhos para o mandante:
+	<a style="color: black;">{{ form.vermelhos_mandante }}</a>
+</div>
+<div style="margin: 20px auto 0px 320px;">
+	Cartões vermelhos para o visitante:
+	<a style="color: black;">{{ form.vermelhos_visitante }}</a>
+</div>
+<b><div style="margin: 5px auto 0px 320px; color: black;">
+    {{ form.enviar() }}</b>
+</div>
+</div>
+</body></b>
+{% endblock %}
+
